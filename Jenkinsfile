@@ -14,6 +14,11 @@ pipeline{
                      sh './gradlew clean build'
                         }
                        }
+        stage("DOCKER Build"){
+            steps {
+                sh 'docker build -t springboot-devsecops:v1 .'
+            }
+        }
 
 
                       }
