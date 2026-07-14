@@ -1,4 +1,4 @@
-FROM eclipse-termurin:21-jre-alpine
+FROM eclipse-termurin:21-jre-jammy
 WORKDIR /app
 COPY build/libs/*.jar app.jar
 EXPOSE 8080
