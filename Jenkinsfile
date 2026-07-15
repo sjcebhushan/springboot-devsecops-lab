@@ -20,6 +20,15 @@ pipeline{
             }
         }
 
+        stage("Run Container"){
+            steps {
+                sh '''
+                docker   rm -f springboot-app || true
+                docker   run -d --name  springboot-app -p 8080:8080  springboot-devsecops:v1
+                '''
+            }
+        }
+
 
                       }
          }
