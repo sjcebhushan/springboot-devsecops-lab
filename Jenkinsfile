@@ -29,6 +29,12 @@ pipeline{
             }
         }
 
+        stage('Health Check'){
+            steps {
+                sh 'curl http://host.docker.internal:8080/employee/employee-details'
+            }
+        }
+
 
                       }
          }
