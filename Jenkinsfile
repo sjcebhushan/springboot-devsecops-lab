@@ -27,6 +27,7 @@ pipeline{
                          -Dsonar.sources=. \
                          -Dsonar.java.binaries=build/classes
                        '''
+                    sh 'mvn sonar:sonar -Dsonar.java.lombok.enabled=true'
 
 
                 }
