@@ -14,6 +14,25 @@ pipeline{
                      sh './gradlew clean build'
                         }
                        }
+
+        stage("SonarQube Analysis"){
+            environment {
+                SCANNER_HOME = tool 'SonarScanner'
+            }
+            steps {
+               withSonarQubeEnv('SonarQube'){
+                    sh '''
+                         ${SCANNER_HOME}/bin/sonar-scanner \
+                         -Dsonar.projectKey=springboot-devsecops \
+                         -Dsonar.sources=. \
+                         -Dsonar.java.binaries=build/classes
+                       '''
+
+
+                }
+
+            }
+        }
         stage("DOCKER Build"){
             steps {
                 sh 'docker build -t springboot-devsecops:v1 .'
