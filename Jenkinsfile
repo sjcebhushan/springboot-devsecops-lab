@@ -32,7 +32,8 @@ pipeline{
         stage('Health Check'){
             steps {
                 sleep 20
-                sh 'curl --fail http://host.docker.internal:8080/employee/employee-details'
+                sh 'curl --fail http://host.docker.internal:8080/actuator/health'
+                sh 'curl http://host.docker.internal:8080/employee/employee-details'
             }
         }
 
