@@ -26,9 +26,8 @@ pipeline{
                          -Dsonar.projectKey=springboot-devsecops \
                          -Dsonar.sources=. \
                          -Dsonar.java.binaries=build/classes
-                         -Dsonar.java.lombok.enabled=true
                        '''
-
+                    sh './gradlew sonar -Dsonar.java.lombok.enabled=true'
 
 
                 }
