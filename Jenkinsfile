@@ -34,6 +34,13 @@ pipeline{
 
             }
         }
+
+        stage('OWASP Dependency Check'){
+            steps {
+                dependencyCheck additionalArguments: '--scan .', odcInstallation:'DependencyCheck'
+                DependencyCheckPublisher pattern: '***/dependency-check-report.xml'
+            }
+        }
         stage("DOCKER Build"){
             steps {
                 sh 'docker build -t springboot-devsecops:v1 .'
