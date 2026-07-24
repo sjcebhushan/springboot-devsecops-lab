@@ -38,7 +38,7 @@ pipeline{
         stage('OWASP Dependency Check'){
             steps {
                 dependencyCheck additionalArguments: '--scan .', odcInstallation:'DependencyCheck'
-                DependencyCheckPublisher pattern: '***/dependency-check-report.xml'
+                dependencyCheckPublisher pattern: '***/dependency-check-report.xml'
             }
         }
         stage("DOCKER Build"){
